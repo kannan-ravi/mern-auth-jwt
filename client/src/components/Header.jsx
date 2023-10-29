@@ -5,7 +5,7 @@ const Header = () => {
     <header className="bg-slate-200">
       <div className="container mx-auto flex justify-between items-center p-3">
         <Link to="/">
-          <h1 className="font-bold text-base">KANNA APP</h1>
+          <h1 className="font-bold text-base">KANNA AUTH</h1>
         </Link>
         <div className="flex items-center gap-5 text-xs">
           <Link
@@ -21,10 +21,10 @@ const Header = () => {
             About
           </Link>
           <Link
-            to="/login"
+            to="/sign-in"
             className="font-medium hover:text-blue-500 duration-300 transition-colors"
           >
-            Login
+            Sign In
           </Link>
         </div>
       </div>
