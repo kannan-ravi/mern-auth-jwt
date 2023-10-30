@@ -10,12 +10,14 @@ function SignIn() {
           type="email"
           placeholder="Email"
           className="p-2 text-sm border border-gray-400 rounded-md w-full"
+          id="email"
           required
         />
         <input
           type="password"
           placeholder="Password"
           className="p-2 text-sm border border-gray-400 rounded-md w-full"
+          id="password"
           required
         />
         <button className="text-sm uppercase bg-blue-500 border border-blue-500  text-white p-2 w-full rounded-md  hover:bg-transparent hover:text-black duration-300 transition-colors">
