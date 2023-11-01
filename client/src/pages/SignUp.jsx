@@ -27,9 +27,9 @@ function SignUp() {
 
     if (data.success === false) {
       setError(true);
-    } else {
-      navigate("/sign-in");
     }
+
+    navigate("/sign-in");
   };
   return (
     <div className="pt-6 max-w-md mx-auto">
@@ -77,7 +77,6 @@ function SignUp() {
         <p className="mt-4 text-xs">
           Already have account
           <Link to="/sign-in" className="text-blue-500">
-            {" "}
             Sing In
           </Link>
         </p>
