@@ -1,34 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [formData, setFormData] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setError(false);
-      setLoading(true);
-      const res = await fetch("/api/auth/sign-up", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      setLoading(false);
-      if (data.success === false) {
-        setError(true);
-      }
-    } catch (error) {
-      setLoading(false);
+    setError(false);
+    setLoading(true);
+    const res = await fetch("/api/auth/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    setLoading(false);
+
+    if (data.success === false) {
       setError(true);
+    } else {
+      navigate("/sign-in");
     }
   };
   return (
@@ -43,7 +43,7 @@ function SignUp() {
           placeholder="Username"
           className="p-2 text-sm border border-gray-400 rounded-md w-full"
           onChange={handleChange}
-          id="username"
+          name="username"
           required
         />
         <input
@@ -51,7 +51,7 @@ function SignUp() {
           placeholder="Email"
           className="p-2 text-sm border border-gray-400 rounded-md w-full"
           onChange={handleChange}
-          id="email"
+          name="email"
           required
         />
         <input
@@ -59,7 +59,7 @@ function SignUp() {
           placeholder="Password"
           className="p-2 text-sm border border-gray-400 rounded-md w-full"
           onChange={handleChange}
-          id="password"
+          name="password"
           required
         />
         <button
