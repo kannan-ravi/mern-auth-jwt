@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authStart, authSuccess, authFailure } from "../state/users/userSlice";
+import OAuth from "../components/OAuth";
 
 function SignUp() {
   const [formData, setFormData] = useState("");
@@ -73,9 +74,7 @@ function SignUp() {
         >
           {loading ? "loading..." : "sign up"}
         </button>
-        <button className="text-sm bg-red-500 border border-red-500 uppercase w-full p-2 text-white rounded-md hover:bg-transparent hover:text-black duration-300 transition-colors">
-          continue with google
-        </button>
+        <OAuth />
       </form>
       <div>
         <p className="mt-4 text-xs">

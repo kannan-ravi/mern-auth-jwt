@@ -39,4 +39,6 @@ const singIn = async (req, res, next) => {
   }
 };
 
-export default { signUp, singIn };
+const googleAuth = async (req, res, next) => {};
+
+export default { signUp, singIn, googleAuth };

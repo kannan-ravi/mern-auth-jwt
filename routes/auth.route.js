@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.route("/sign-up").post(authController.signUp);
 router.route("/sign-in").post(authController.singIn);
-
+router.route("/google").post(authController.googleAuth);
 export default router;
