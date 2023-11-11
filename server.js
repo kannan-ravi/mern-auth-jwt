@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
 import connectDB from "./config/dbConnection.js";
 import corsOptions from "./config/corsOptions.js";
 import userRoutes from "./routes/user.route.js";
@@ -10,7 +11,15 @@ import authRoutes from "./routes/auth.route.js";
 import errorHandler from "./middleware/errorHandler.js";
 dotenv.config();
 
+const __dirname = path.resolve();
+
 const app = express();
+
+app.use(express.static(path.join(__dirname, "/client/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
+
 const PORT = process.env.PORT || 3000;
 
 connectDB();
