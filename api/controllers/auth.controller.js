@@ -9,9 +9,15 @@ const signUp = async (req, res, next) => {
   const newUser = new UserModel({ username, email, password: hashedPassword });
   try {
     await newUser.save();
-    res.status(201).json({ message: "USER HAS BEEN SUCCESSFULLY CREATED" });
+
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+    const { password, hashedPassword, ...rest } = newUser._doc;
+    const expireDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    res
+      .cookie("token", token, { httpOnly: true, expires: expireDate })
+      .status(200)
+      .json(rest);
   } catch (error) {
-    // res.status(500).json(error.message);
     next(error);
   }
 };

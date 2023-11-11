@@ -31,7 +31,7 @@ function SignUp() {
         return;
       }
       dispatch(authSuccess(data));
-      navigate("/sign-in");
+      navigate("/profile");
     } catch (error) {
       dispatch(authFailure(error));
     }
