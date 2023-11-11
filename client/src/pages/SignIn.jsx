@@ -75,7 +75,7 @@ function SignIn() {
           Don't have account
           <Link to="/sign-up" className="text-blue-500">
             {" "}
-            Sing up
+            Sign up
           </Link>
         </p>
       </div>

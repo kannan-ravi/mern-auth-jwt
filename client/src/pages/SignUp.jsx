@@ -81,7 +81,7 @@ function SignUp() {
           Already have account
           <Link to="/sign-in" className="text-blue-500">
             {" "}
-            Sing In
+            Sign In
           </Link>
         </p>
       </div>

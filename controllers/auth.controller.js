@@ -78,4 +78,8 @@ const googleAuth = async (req, res, next) => {
   }
 };
 
-export default { signUp, singIn, googleAuth };
+const signOut = (req, res) => {
+  res.clearCookie("token").status(200).json("SignOut Success");
+};
+
+export default { signUp, singIn, googleAuth, signOut };
