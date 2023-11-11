@@ -54,7 +54,7 @@ const googleAuth = async (req, res, next) => {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
         Math.random().toString(36).slice(-8);
-      const hashedPassword = bcryptjs.hashSync(generatedPassword, 14);
+      const hashedPassword = bcryptjs.hashSync(generatedPassword, 13);
       const username =
         req.body.name.split(" ").join("").toLowerCase() +
         Math.random().toString(36).slice(-8);

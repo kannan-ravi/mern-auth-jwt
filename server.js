@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import connectDB from "./config/dbConnection.js";
 import corsOptions from "./config/corsOptions.js";
 import userRoutes from "./routes/user.route.js";
@@ -18,6 +19,7 @@ connectDB();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
